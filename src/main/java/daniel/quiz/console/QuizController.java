@@ -16,10 +16,15 @@ public class QuizController {
     public void startQuiz() {
         //pokazujemy zasady quizu
         quizConsoleView.showIntro();
-        Question question = quizServer.getQuestion();
+        executeQuestion();
+        executeQuestion();
+    }
+
+    private void executeQuestion() {
+        Question question = quizServer.prepareQuestion();
         quizConsoleView.showQuestion(question);
         String answer = quizConsoleView.readAnswer();
-        String feedback = quizServer.checkAnswer(answer);
+        String feedback = quizServer.userAnswered(answer);
         quizConsoleView.showFeedback(feedback);
     }
 

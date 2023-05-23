@@ -19,7 +19,6 @@ public class QuizConsoleView {
 
     public void showQuestion(Question question) {
         System.out.println(question.getDescription());
-
     }
 
     public String readAnswer() {
