@@ -7,6 +7,7 @@ import java.util.NoSuchElementException;
 public class QuizServer {
 
     private Question actualQuestion = null;
+    private int correctAnswers = 0;
     private InMemoryQuestionRepository repository;
 
 
@@ -33,8 +34,8 @@ public class QuizServer {
     }
 
     public void setNextQuestion() {
-        int questionNumber= 1;
-        if (actualQuestion!=null ) {
+        int questionNumber = 1;
+        if (actualQuestion != null) {
             questionNumber = actualQuestion.getNumber() + 1;
         }
         actualQuestion = repository.findQuestionBy(questionNumber)
@@ -43,8 +44,15 @@ public class QuizServer {
 
 
     public String userAnswered(String answer) {
-        return actualQuestion.checkAnswer(answer);
+        Question.AnswerResult answerResult = actualQuestion.checkAnswer(answer);
+        if (answerResult.isCorrect()) {
+            correctAnswers++;
+        }
+        return answerResult.getFeedback();
     }
 
 
+    public int howManyCorrect() {
+        return correctAnswers;
+    }
 }

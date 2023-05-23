@@ -17,13 +17,16 @@ public class Question {
 
     }
 
-    public String checkAnswer(String answer) {
+    public AnswerResult checkAnswer(String answer) {
         //tenary operator, skrócony if dla przypadku w którym mamy jedne dane dla
         //spełnionego warunku inne dla nieprawdy
-        String intro = correctAnswer.equalsIgnoreCase(answer) ?
+        boolean correct = correctAnswer.equalsIgnoreCase(answer);
+        String intro = correct ?
                 "Prawidłowa odpowiedź" :
                 "Nieprawidłowa odpowiedź";
-        return intro + ", " + feedback;
+        String fullFeedback = intro + ", " + feedback;
+
+        return new AnswerResult(fullFeedback,correct);
     }
 
 
@@ -33,6 +36,25 @@ public class Question {
 
     public int getNumber() {
         return number;
+    }
+
+    public static class AnswerResult{
+
+        private String feedback;
+        private boolean correct;
+
+        public AnswerResult(String feedback, boolean correct) {
+            this.feedback = feedback;
+            this.correct = correct;
+        }
+
+        public String getFeedback() {
+            return feedback;
+        }
+
+        public boolean isCorrect() {
+            return correct;
+        }
     }
 
 }

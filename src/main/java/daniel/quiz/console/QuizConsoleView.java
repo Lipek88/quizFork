@@ -29,4 +29,8 @@ public class QuizConsoleView {
         System.out.println(feedback);
         System.out.println();
     }
+
+    public void showCounter(int howManyCorrect) {
+        System.out.println("Poprawnych odpowiedzi: " + howManyCorrect);
+    }
 }

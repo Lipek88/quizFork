@@ -26,6 +26,7 @@ public class QuizController {
         String answer = quizConsoleView.readAnswer();
         String feedback = quizServer.userAnswered(answer);
         quizConsoleView.showFeedback(feedback);
+        quizConsoleView.showCounter(quizServer.howManyCorrect());
     }
 
 
