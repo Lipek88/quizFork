@@ -1,16 +1,16 @@
 package daniel.quiz;
 
 import daniel.quiz.console.QuizController;
-import daniel.quiz.console.QuizView;
+import daniel.quiz.console.QuizConsoleView;
 import daniel.quiz.server.QuizServer;
 
 public class ConsoleLauncher {
 
     public static void main(String[] args) {
         //pokaz ze jesteśmy w quizie
-        QuizView quizView = new QuizView();
+        QuizConsoleView quizConsoleView = new QuizConsoleView();
         QuizServer quizServer = new QuizServer();
-        QuizController quizController = new QuizController(quizView,quizServer);
+        QuizController quizController = new QuizController(quizConsoleView,quizServer);
         quizController.startQuiz();
     }
 

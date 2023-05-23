@@ -1,20 +1,26 @@
 package daniel.quiz.console;
 
+import daniel.quiz.server.Question;
 import daniel.quiz.server.QuizServer;
 
 public class QuizController {
 
-    private QuizView quizView;
+    private QuizConsoleView quizConsoleView;
     private QuizServer quizServer;
 
-    public QuizController(QuizView quizView, QuizServer quizServer) {
-        this.quizView = quizView;
+    public QuizController(QuizConsoleView quizConsoleView, QuizServer quizServer) {
+        this.quizConsoleView = quizConsoleView;
         this.quizServer = quizServer;
     }
 
     public void startQuiz() {
         //pokazujemy zasady quizu
-        quizView.showIntro();
+        quizConsoleView.showIntro();
+        Question question = quizServer.getQuestion();
+        quizConsoleView.showQuestion(question);
+        String answer = quizConsoleView.readAnswer();
+        String feedback = quizServer.checkAnswer(answer);
+        quizConsoleView.showFeedback(feedback);
     }
 
 
