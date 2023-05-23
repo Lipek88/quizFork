@@ -13,19 +13,6 @@ public class QuizServer {
 
     public QuizServer(InMemoryQuestionRepository repository) {
         this.repository = repository;
-
-        //przygotowanie bazy pytań
-        Question question1 = new Question("Czy jedna klasa może rozszerzać " +
-                "wiele interfejsów?", "Tak",
-                "Poprawna odpowiedź: można implementować wiele interfejsów a tylko po " +
-                        "jednej klasie na raz dziedziczyny");
-
-        Question question2 = new Question("Ile mamy typów prymitywnych?", "8",
-                "Poprawna odpowiedź: 8, typy te to: byte, short, int, long," +
-                        " float, double, boolean, char");
-
-        repository.add(question1);
-        repository.add(question2);
     }
 
     public Question prepareQuestion() { //rzuca wyjątek jak się skończą
@@ -54,5 +41,9 @@ public class QuizServer {
 
     public int howManyCorrect() {
         return correctAnswers;
+    }
+
+    Question getActualQuestion() {
+        return actualQuestion;
     }
 }
