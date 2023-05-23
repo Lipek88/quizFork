@@ -15,7 +15,7 @@ public class QuizController {
 
     public void startQuiz() {
         //pokazujemy zasady quizu
-        quizConsoleView.showIntro();
+        quizConsoleView.showIntro(quizServer.getIntroText());
         executeQuestion();
         executeQuestion();
     }

@@ -2,18 +2,17 @@ package daniel.quiz.console;
 
 import daniel.quiz.server.Question;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class QuizConsoleView {
 
     private Scanner scanner = new Scanner(System.in);
 
-    public void showIntro() {
-        System.out.println("Rozpoczynasz quiz z javy!");
-        System.out.println("Quiz ma na celu pomóc Ci przećwiczyć swoje odpowiedzi na pytania z najważniejszych dziedzin" +
-                "programowania w javie.");
-        System.out.println("Po każdym pytaniu zobaczysz poprawną odpowiedź");
-        System.out.println();
+    public void showIntro(List<String> messages) {
+        for (String message : messages) {
+            System.out.println(message);
+        }
     }
 
 

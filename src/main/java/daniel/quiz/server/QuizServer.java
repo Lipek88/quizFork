@@ -1,9 +1,12 @@
 package daniel.quiz.server;
 
 import daniel.quiz.repository.InMemoryQuestionRepository;
+import org.springframework.stereotype.Controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
-
+@Controller//czy dałbym radę uniknąć używania springowych rzeczy?
 public class QuizServer {
 
     private Question actualQuestion = null;
@@ -18,6 +21,16 @@ public class QuizServer {
     public Question prepareQuestion() { //rzuca wyjątek jak się skończą
         setNextQuestion();
         return actualQuestion;
+    }
+
+    public List<String> getIntroText() {
+        List<String> messages = new ArrayList<>();
+        messages.add("Rozpoczynasz quiz z javy!");
+        messages.add("Quiz ma na celu pomóc Ci przećwiczyć swoje odpowiedzi na pytania z najważniejszych dziedzin" +
+                "programowania w javie."
+        );
+        messages.add("Po każdym pytaniu zobaczysz poprawną odpowiedź");
+        return messages;
     }
 
     public void setNextQuestion() {
