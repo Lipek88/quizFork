@@ -6,5 +6,12 @@
 </head>
 <body>
 <div th:each="message:${intro}" th:text="${message}"></div>
+<br>
+<div th:text="${question.description}"></div>
+<form action="/quiz" method="post">
+    <label>Podaj odpowiedź:</label>
+    <input type="text" name="answer">
+    <button type="submit">Sprawdzam</button>
+</form>
 </body>
 </html>
