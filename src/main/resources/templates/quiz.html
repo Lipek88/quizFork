@@ -7,7 +7,10 @@
 <body>
 <div th:each="message:${intro}" th:text="${message}"></div>
 <br>
+<h2 th:text="${feedback}"></h2>
+<div th:if="${counter} != null" th:text="'Poprawnych odpowiedzi: ' + ${counter}"></div>
 <div th:text="${question.description}"></div>
+
 <form action="/quiz" method="post">
     <label>Podaj odpowiedź:</label>
     <input type="text" name="answer">

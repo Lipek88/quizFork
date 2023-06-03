@@ -4,6 +4,7 @@ import daniel.quiz.server.Question;
 import daniel.quiz.server.QuizService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -17,25 +18,26 @@ public class QuizMvcController {
         this.quizService = quizService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/quiz")
     public ModelAndView getQuizPage() {
         List<String> intro = quizService.getIntroText();
         ModelAndView modelAndView = new ModelAndView("quiz.html");
         modelAndView.addObject("intro", intro);
         Question question = quizService.prepareQuestion();
-        modelAndView.addObject("question",question);
+        modelAndView.addObject("question", question);
         return modelAndView;
     }
 
- /*   private void executeQuestion() {
-        Question question = quizServer.prepareQuestion();
-        quizConsoleView.showQuestion(question);
-        String answer = quizConsoleView.readAnswer();
-        String feedback = quizServer.userAnswered(answer);
-        quizConsoleView.showFeedback(feedback);
-        quizConsoleView.showCounter(quizServer.howManyCorrect());
-    }*/
 
-
+    @PostMapping("/quiz")
+    public ModelAndView userAnswered(String answer) {
+        String feedback = quizService.userAnswered(answer);
+        ModelAndView modelAndView = new ModelAndView("quiz.html");
+        modelAndView.addObject("feedback", feedback);
+        Question question = quizService.prepareQuestion();
+        modelAndView.addObject("question", question);
+        modelAndView.addObject("counter", quizService.howManyCorrect());
+        return modelAndView;
+    }
 
 }
