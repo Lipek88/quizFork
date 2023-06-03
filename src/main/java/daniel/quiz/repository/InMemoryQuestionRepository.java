@@ -9,7 +9,7 @@ import java.util.Optional;
 @Repository
 public class InMemoryQuestionRepository {
 
-    private List<Question> questions = new ArrayList<>();
+    private final List<Question> questions = new ArrayList<>();
 
     public void add(Question question) {
         questions.add(question);

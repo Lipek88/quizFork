@@ -1,11 +1,10 @@
 package daniel.quiz;
 
-import daniel.quiz.console.QuizController;
+import daniel.quiz.console.QuizConsoleController;
 import daniel.quiz.console.QuizConsoleView;
 import daniel.quiz.repository.InMemoryQuestionRepository;
-import daniel.quiz.server.Question;
 import daniel.quiz.server.QuestionFactory;
-import daniel.quiz.server.QuizServer;
+import daniel.quiz.server.QuizService;
 
 public class ConsoleLauncher {
 
@@ -15,9 +14,9 @@ public class ConsoleLauncher {
         InMemoryQuestionRepository repository = new InMemoryQuestionRepository();
         QuestionFactory factory = new QuestionFactory(repository);
         factory.fillRepository();
-        QuizServer quizServer = new QuizServer(repository);
-        QuizController quizController = new QuizController(quizConsoleView, quizServer);
-        quizController.startQuiz();
+        QuizService quizService = new QuizService(repository);
+        QuizConsoleController quizConsoleController = new QuizConsoleController(quizConsoleView, quizService);
+        quizConsoleController.startQuiz();
     }
 }
 

@@ -1,26 +1,21 @@
 package daniel.quiz.server;
 
 import daniel.quiz.repository.InMemoryQuestionRepository;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
-@Controller//czy dałbym radę uniknąć używania springowych rzeczy?
-public class QuizServer {
+@Service//czy dałbym radę uniknąć używania springowych rzeczy?
+public class QuizService {
 
     private Question actualQuestion = null;
     private int correctAnswers = 0;
     private InMemoryQuestionRepository repository;
 
 
-    public QuizServer(InMemoryQuestionRepository repository) {
+    public QuizService(InMemoryQuestionRepository repository) {
         this.repository = repository;
-    }
-
-    public Question prepareQuestion() { //rzuca wyjątek jak się skończą
-        setNextQuestion();
-        return actualQuestion;
     }
 
     public List<String> getIntroText() {
@@ -31,6 +26,11 @@ public class QuizServer {
         );
         messages.add("Po każdym pytaniu zobaczysz poprawną odpowiedź");
         return messages;
+    }
+
+    public Question prepareQuestion() { //rzuca wyjątek jak się skończą
+        setNextQuestion();
+        return actualQuestion;
     }
 
     public void setNextQuestion() {

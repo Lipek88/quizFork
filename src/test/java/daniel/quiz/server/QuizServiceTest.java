@@ -9,7 +9,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class QuizServerTest {
+class QuizServiceTest {
 
     @Test
     @DisplayName("setNextQuestion asks repository for question of correct number.")
@@ -30,15 +30,15 @@ class QuizServerTest {
         Mockito.when(mock.findQuestionBy(2)).thenReturn(Optional.of(question2));
 
 
-        QuizServer quizServer = new QuizServer(mock);
+        QuizService quizService = new QuizService(mock);
 
 
 
-        quizServer.setNextQuestion();
-        assertEquals(question1, quizServer.getActualQuestion());
-        quizServer.setNextQuestion();
+        quizService.setNextQuestion();
+        assertEquals(question1, quizService.getActualQuestion());
+        quizService.setNextQuestion();
         Mockito.verify(mock).findQuestionBy(1);
-        assertEquals(question2, quizServer.getActualQuestion());
+        assertEquals(question2, quizService.getActualQuestion());
         Mockito.verify(mock).findQuestionBy(2);
 
 
