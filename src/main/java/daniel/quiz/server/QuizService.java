@@ -1,6 +1,7 @@
 package daniel.quiz.server;
 
 import daniel.quiz.repository.InMemoryQuestionRepository;
+import daniel.quiz.repository.QuestionRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,10 +12,10 @@ public class QuizService {
 
     private Question actualQuestion = null;
     private int correctAnswers = 0;
-    private InMemoryQuestionRepository repository;
+    private QuestionRepository repository;
 
 
-    public QuizService(InMemoryQuestionRepository repository) {
+    public QuizService(QuestionRepository repository) {
         this.repository = repository;
     }
 

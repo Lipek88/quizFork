@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 @Repository
-public class InMemoryQuestionRepository {
+public class InMemoryQuestionRepository implements QuestionRepository {
 
     private final List<Question> questions = new ArrayList<>();
 

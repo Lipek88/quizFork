@@ -1,14 +1,15 @@
 package daniel.quiz.server;
 
 import daniel.quiz.repository.InMemoryQuestionRepository;
+import daniel.quiz.repository.QuestionRepository;
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
 
 @Component
 public class QuestionFactory {
-    private InMemoryQuestionRepository repository;
+    private QuestionRepository repository;
 
-    public QuestionFactory(InMemoryQuestionRepository repository) {
+    public QuestionFactory(QuestionRepository repository) {
         this.repository = repository;
     }
 

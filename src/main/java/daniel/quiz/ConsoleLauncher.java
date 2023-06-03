@@ -3,6 +3,7 @@ package daniel.quiz;
 import daniel.quiz.console.QuizConsoleController;
 import daniel.quiz.console.QuizConsoleView;
 import daniel.quiz.repository.InMemoryQuestionRepository;
+import daniel.quiz.repository.QuestionRepository;
 import daniel.quiz.server.QuestionFactory;
 import daniel.quiz.server.QuizService;
 
@@ -11,7 +12,7 @@ public class ConsoleLauncher {
     public static void main(String[] args) {
         //pokaz ze jesteśmy w quizie
         QuizConsoleView quizConsoleView = new QuizConsoleView();
-        InMemoryQuestionRepository repository = new InMemoryQuestionRepository();
+        QuestionRepository repository = new InMemoryQuestionRepository();
         QuestionFactory factory = new QuestionFactory(repository);
         factory.fillRepository();
         QuizService quizService = new QuizService(repository);
