@@ -1,6 +1,5 @@
 package daniel.quiz.server;
 
-import daniel.quiz.repository.InMemoryQuestionRepository;
 import daniel.quiz.repository.QuestionRepository;
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
