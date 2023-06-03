@@ -15,6 +15,9 @@ public class QuestionFactory {
 
     @PostConstruct
     public void fillRepository() {
+        //przydałoby się zabezpieczyć żeby nie dodawał pytań jeśli repo jest puste
+        //aktualne generowanie id przez baze danych nie gwarantuje odpowiednich wartości, może lepiej przekazywać
+        //id w konstruktorze lub dostosować generator
         //przygotowanie bazy pytań
         Question question1 = new Question("Czy jedna klasa może rozszerzać " +
                 "wiele interfejsów?", "Tak",
