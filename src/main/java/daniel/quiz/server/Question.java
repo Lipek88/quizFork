@@ -1,20 +1,29 @@
 package daniel.quiz.server;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "questions")
 public class Question {
-    private final int number;
+    @Id
+    @GeneratedValue
+    private  int id;
     private static  int nextNumber = 1;
-    private final String description;
-    private final String correctAnswer;
-    private final String feedback;
+    private  String description;
+    @Column(name = "correct_answer")
+    private  String correctAnswer;
+    private  String feedback;
 
     public Question(String description, String correctAnswer, String feedback) {
         this.description = description;
         this.correctAnswer = correctAnswer;
         this.feedback = feedback;
         //reczna implementacja generowania id
-        number = nextNumber++;
+        id = nextNumber++;
         //nextNumber++;
+    }
 
+    public Question() {
     }
 
     public AnswerResult checkAnswer(String answer) {
@@ -34,8 +43,8 @@ public class Question {
         return description;
     }
 
-    public int getNumber() {
-        return number;
+    public int getId() {
+        return id;
     }
 
     public static class AnswerResult{

@@ -17,7 +17,7 @@ public class InMemoryQuestionRepository implements QuestionRepository {
 
     public Optional<Question> findQuestionBy(int number) {
         return questions.stream()
-                .filter(question -> question.getNumber() == number)
+                .filter(question -> question.getId() == number)
                 .findFirst();
     }
 

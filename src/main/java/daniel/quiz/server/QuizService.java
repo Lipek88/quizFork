@@ -1,6 +1,5 @@
 package daniel.quiz.server;
 
-import daniel.quiz.repository.InMemoryQuestionRepository;
 import daniel.quiz.repository.QuestionRepository;
 import org.springframework.stereotype.Service;
 
@@ -37,7 +36,7 @@ public class QuizService {
     public void setNextQuestion() {
         int questionNumber = 1;
         if (actualQuestion != null) {
-            questionNumber = actualQuestion.getNumber() + 1;
+            questionNumber = actualQuestion.getId() + 1;
         }
         actualQuestion = repository.findQuestionBy(questionNumber)
                 .orElseThrow(() -> new NoSuchElementException("Nie znaleziono pytania"));
